@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>WPL - Projects</title>
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h1>Projects</h1>
+
+    <a href="{{ url_for('add_project') }}">
+        <button class="button">New</button>
+    </a>
+    <a href="{{ url_for('remove_project') }}">
+        <button class="button">Remove</button>
+    </a>
+    <br><br>
+
+    <figure>
+        <ul class="sparklist">
+            {%for p in projects%}
+            <li>
+                <a>{{ p }}</a>
+                {% set idx = loop.index-1 %}
+                <span class="sparkline">
+                    {%for val in times[idx]%}
+                    <span class="index">
+                        <span class="count" style="height: {{ val }}%;">
+                            {{val}} </span>
+                    </span>
+                    {%endfor%}
+                </span>
+            </li>
+            {%endfor%}
+        </ul>
+    </figure>
+
+    {% endblock %}
+</body>
+
+</html>

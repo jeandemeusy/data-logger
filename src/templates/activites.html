@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>WPL - Activites</title>
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h1>Activites</h1>
+
+    {% for e in events %}
+
+    <li>
+        <a>{{ e[1] }} </a> {{ e[0] }} for {{ e[2] }}min<br>
+    </li>
+    {% endfor %}
+
+    <br><br>
+
+    <a>Total</a> {{ "%02d"|format(total_hour_min[0]) }}h{{"%02d"|format(total_hour_min[1])}} <br>
+    <a>Pause</a> {{ "%02d"|format(pause_hour_min[0]) }}h{{"%02d"|format(pause_hour_min[1])}}
+    {% endblock %}
+</body>
+
+</html>
